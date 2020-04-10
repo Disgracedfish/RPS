@@ -1,0 +1,68 @@
+<html>
+
+
+<head>
+
+</head>
+
+<body>
+
+
+    <script>
+        
+        function computerPlay(){
+        // this function makes a random choice for the computer
+            let options = ['rock', 'paper', 'scissors'];
+            let index = Math.floor(Math.random() * options.length);
+            let computerSelection = options[index];
+            return computerSelection;
+
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            let result;
+            // make all inputs lowercase
+            let playerChoice = playerSelection.toLowerCase();
+            let computerChoice = computerSelection.toLowerCase();
+            // check for a tie first
+            if (playerChoice===computerChoice) {
+                result = 'It\s a tie! ' + playerChoice + ' and ' + computerChoice +'.';
+            
+            } else { 
+                // if there is no tie, then check to see if player wins
+                if ((playerChoice === 'rock' & computerChoice === 'scissors')||
+                     (playerChoice === 'paper' & computerChoice === 'rock') ||
+                     (playerChoice === 'scissors' & computerChoice === 'paper')) {
+                         result = 'You win! ' + playerChoice + ' beats ' +computerChoice +'.';
+                } else {
+                    // if player didn't win and there was no tie, player must have lost
+                    result = 'You lose :( ' + computerChoice + ' beats ' + playerChoice +'.';
+                }
+
+
+            }
+
+
+            return result;
+        }
+        
+        function play(rounds) {
+            for (let step =0; step < rounds; step ++) {
+                let playerChoice = prompt('Enter your choice: ');
+                alert(playRound(playerChoice, computerPlay()));
+            }
+        }
+
+        play(5)
+
+
+    </script>
+
+
+
+
+</body>
+
+
+
+</html>
